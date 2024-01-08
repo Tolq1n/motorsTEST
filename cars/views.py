@@ -65,14 +65,16 @@ class DataMaker(APIView):
 
             last_brand_id = Brand.objects.last().api_brand_id
 
-            index = None
+            if last_brand_id is not None:
+                
+                index = None
 
-            for i, item in enumerate(mark_models):
-                if item['id'] == last_brand_id:
-                    index = i
-                    break
-            
-            mark_models = mark_models[index+1:]
+                for i, item in enumerate(mark_models):
+                    if item['id'] == last_brand_id:
+                        index = i
+                        break
+                
+                mark_models = mark_models[index+1:]
 
             for mark_model in mark_models:
 
