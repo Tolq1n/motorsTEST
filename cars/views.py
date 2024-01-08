@@ -63,10 +63,11 @@ class DataMaker(APIView):
             
             # cache = redis.Redis(host='localhost', port=6379, db=0)
 
-            last_brand_id = Brand.objects.last().api_brand_id
+            last_brand = Brand.objects.last()
 
-            if last_brand_id is not None:
-                
+            if last_brand:
+                last_brand_id = last_brand.api_brand_id
+
                 index = None
 
                 for i, item in enumerate(mark_models):
